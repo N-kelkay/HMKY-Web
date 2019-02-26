@@ -173,3 +173,98 @@
     display: none;
   }
   
+  /* ------------------Media Queries (for mobile version)---------------- */
+
+@media(max-width:900px) {
+  header h1 {
+    font-size: 72px;
+  }
+
+  nav {
+    display: flex;
+    height:100vh;
+    transform:scaleY(0) translateY(1200px); /* toget rid of nav words and put them in a drop down*/
+    background:rgba(255, 255, 255, 0.8);
+    transition:.4s;
+  }
+  /* when the menu icon is pressed it will add active to nav (the javascript) then the css will execute this */
+  nav.active {
+    transform:scaleY(1) translateY(0px);
+  }
+
+  nav ul {
+    margin:0 auto;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  nav ul li {
+    padding: 42px 0;
+  }
+
+  nav li a {
+    font-size:20px;
+    position: relative;
+  }
+
+    /* to give under line to words in nav */
+  nav li a:after {
+    content:'';
+    position: absolute;
+    left:0;
+    right:0;
+    height:24px;
+    width:60%;
+    margin: 0 auto;
+    border-bottom: 1px solid black;
+  }
+
+     /*-----------Follow me section---------*/
+
+  .section-follow .follow-me:after {
+    width:120px;
+    height:36px;
+  }
+
+  /*-----------Body sections--------*/
+
+  section h3 {
+    font-size:24px;
+  }
+
+  section { /* only does for one section */
+    flex-direction: column;
+    height:auto;
+    text-align: center;
+  }
+
+  section:nth-child(2n) { /* to account for the other sections */
+    flex-direction: column;
+  }
+
+  section .image img { /* Style the image */
+    margin:0 auto;
+    width:95%;
+    height:auto;
+  }
+
+  /* -------------- Menu Icon ----------------*/
+  .menu-btn {
+    z-index:10;
+    color:#474747;
+    display:block;
+    position: fixed;
+    right:16px; top: 16px;
+    font-size:64px;
+    transition:.4s;
+    font-family:'Roboto Slab';
+    cursor: pointer;
+    transform:rotate(0deg);
+  }
+
+  /* to make menu icon rotate with pressed */
+  .menu-btn.active {
+    transform:rotate(45deg);
+  }
+}
