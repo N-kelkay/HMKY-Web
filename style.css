@@ -49,7 +49,7 @@
   
   nav ul a {
     text-decoration: none;
-    color:#424ef4; /*474747*/
+    color:#74a89f; /*474747*/
     margin:0 32px;
     font-size:14px;
     text-transform: uppercase;
@@ -57,17 +57,17 @@
   
   /*------------Header---------------*/
   
-  header {
+  .main-header {
     height:100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background:url(img/NateImg.jpg);
+    background:url(img/WerebBluh.jpg);
     background-repeat: no-repeat;
     background-size: cover;
   }
   
-  header h1 {
+  .main-header h1 {
     font-family: "Raleway";
     text-transform: uppercase;
     color:#fff;
