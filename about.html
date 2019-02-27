@@ -1,37 +1,112 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<!doctype html>
+<html lang="en" class="no-js">
    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>About us</title>
-      <!--Fonts-->
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-      <link href="https://fonts.googleapis.com/css?family=Raleway:800|Roboto+Slab" rel="stylesheet">
-      <link href="style.css" rel="stylesheet">
+      <title>About Us</title>
+      <link href="//cdn.shopify.com/s/files/1/0279/9277/t/83/assets/theme.css?2217529812082149474" rel="stylesheet">
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
+      
+      <!--Google Font-->
+      <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
    </head>
    <body>
-      <div class="container">
-         <!--******Navigation bar*******-->
-         <nav>
-            <ul>
-               <li><a href="index.html">Home</a></li>
-               <li><a href="about.html">About Us</a></li>
-               <li><a href="events.html">Events</a></li>
-               <li><a href="index.html">Album</a></li>
-            </ul>
-         </nav>
-         <!--logo for nav bar-->
-         <div class="logo">
-            <img src="img/logo2.png" alt="HMKY Squad">
-         </div>
-         <!--menu bar for mobile version-->
-         <div class="menu-btn">
-            +
-         </div>
-         <!--******Navigation bar ends********-->
-      </div>
 
-      <script src="main.js"></script>
+      <!--Video start-->
+      <div id="content" class="page about">
+         <!-- START HERO -->
+         <div id="video_hero" class="hero">
+            <video autoplay loop muted>
+               <source src="//cdn.shopify.com/s/files/1/0279/9277/t/83/assets/YellowLeafVideo_20_compressed_2.mp4?2217529812082149474" type="video/mp4">
+               <source src="//cdn.shopify.com/s/files/1/0279/9277/t/83/assets/YellowLeafVideo_20_compressed_2.webm?2217529812082149474" type="video/webm">
+            </video>
+            <div class="container">
+               <!-- var heroTitle -->
+               <h1><span class="heading">RIDICULOUSLY COMFY HAMMOCKS<br>IMPECCABLE CRAFTSMANSHIP<br>TRANSFORMATIVE IMPACT</span></h1>
+            </div>
+         </div>
+         <!-- END HERO -->
+      </div>
+      <!--Video Ends-->
+
+
+
+
+      <!--Video Hero-->
+      <script>
+         $(function() {
+         
+         // IE detect
+         function iedetect(v) {
+         
+            var r = RegExp('msie' + (!isNaN(v) ? ('\\s' + v) : ''), 'i');
+         return r.test(navigator.userAgent);
+         	
+         }
+         
+         // For mobile screens, just show an image. Mobile
+         // screens don't support autoplaying videos, or for IE.
+         if(screen.width < 800 || iedetect(8) || iedetect(7) || 'ontouchstart' in window) {
+         
+         (adjSize = function() { // Create function called adjSize
+         	
+         	$width = $(window).width(); // Width of the screen
+         	$height = $(window).height(); // Height of the screen
+         	
+         	// Resize image accordingly
+         	$('#video_hero').css({
+         		'background-image' : 'url(//cdn.shopify.com/s/files/1/0279/9277/files/positive-impact-hammocks-story.jpg?10116265502052806290)', 
+         		'background-size' : 'cover', 
+         		'width' : $width+'px', 
+         		'height' : $height+'px'
+         	});
+         	
+         	// Hide video
+         	$('video').hide();
+         	
+         })(); // Run instantly
+         
+         // Run on resize too
+         $(window).resize(adjSize);
+         }
+         else {
+         
+         // Wait until the video meta data has loaded
+         $('#video_hero video').on('loadedmetadata', function() {
+         	
+         	var $width, $height, // Width and height of screen
+         		$vidwidth = this.videoWidth, // Width of video (actual width)
+         		$vidheight = this.videoHeight, // Height of video (actual height)
+         		$aspectRatio = $vidwidth / $vidheight; // The ratio the video's height and width are in
+         				
+         	(adjSize = function() { // Create function called adjSize
+         					
+         		$width = $(window).width(); // Width of the screen
+         		$height = $(window).height(); // Height of the screen
+         					
+         		$boxRatio = $width / $height; // The ratio the screen is in
+         					
+         		$adjRatio = $aspectRatio / $boxRatio; // The ratio of the video divided by the screen size
+         					
+         		// Set the container to be the width and height of the screen
+         		$('#video_hero').css({'width' : $width+'px', 'height' : $height+'px'}); 
+         					
+         		if($boxRatio < $aspectRatio) { // If the screen ratio is less than the aspect ratio..
+         			// Set the width of the video to the screen size multiplied by $adjRatio
+         			$vid = $('#video_hero video').css({'width' : $width*$adjRatio+'px'}); 
+         		} else {
+         			// Else just set the video to the width of the screen/container
+         			$vid = $('#video_hero video').css({'width' : $width+'px'});
+         		}
+         						 
+         	})(); // Run function immediately
+         				
+         	// Run function also on window resize.
+         	$(window).resize(adjSize);
+         				
+         });
+             }
+         
+         });
+      </script>
    </body>
 </html>
